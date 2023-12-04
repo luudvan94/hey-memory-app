@@ -22,6 +22,7 @@ module.exports = {
     __dirname: true
   },
   rules: {
-    'no-console': 'error'
+    'no-console': 'error',
+    'no-unused-vars': 'error'
   }
 };
