@@ -1,10 +1,14 @@
-import { SafeAreaView, Text, View, FlatList } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 
 import IconButton from 'src/components/IconButton';
 
 import styles from './HomeScreen.style';
 
-const HomeScreen: React.FC = () => {
+type HomeScreenProps = {
+  onSearchPress: () => void;
+};
+
+const HomeScreen: React.FC<HomeScreenProps> = ({ onSearchPress }) => {
   const events = [
     { id: 1, title: 'Event 1' },
     { id: 2, title: 'Event 2' },
@@ -22,12 +26,12 @@ const HomeScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.topBarContainer}>
           <IconButton onPress={() => {}} iconSource="calendar" />
           <View style={styles.trailingBarButtonContainer}>
-            <IconButton onPress={() => {}} iconSource="search" />
+            <IconButton onPress={onSearchPress} iconSource="search" />
             <IconButton onPress={() => {}} iconSource="plus" />
           </View>
         </View>
@@ -40,7 +44,7 @@ const HomeScreen: React.FC = () => {
         renderItem={renderEventItem}
         keyExtractor={(item) => item.id.toString()}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 
