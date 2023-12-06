@@ -8,7 +8,7 @@
   "importOrderCaseInsensitive": true,
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
-    "^src/(.*)$",
+    "^app/(.*)$",
     "^(.*)/(?!generated)(.*)/(.*)$",
     "^(.*)/generated/(.*)$",
     "^[./]"

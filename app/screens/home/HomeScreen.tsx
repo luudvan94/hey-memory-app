@@ -1,14 +1,12 @@
 import { FlatList, Text, View } from 'react-native';
 
-import IconButton from 'src/components/IconButton';
+import IconButton from 'app/components/IconButton';
 
 import styles from './HomeScreen.style';
 
-type HomeScreenProps = {
-  onSearchPress: () => void;
-};
+type HomeScreenProps = object;
 
-const HomeScreen: React.FC<HomeScreenProps> = ({ onSearchPress }) => {
+const HomeScreen: React.FC<HomeScreenProps> = (props) => {
   const events = [
     { id: 1, title: 'Event 1' },
     { id: 2, title: 'Event 2' },
@@ -31,7 +29,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ onSearchPress }) => {
         <View style={styles.topBarContainer}>
           <IconButton onPress={() => {}} iconSource="calendar" />
           <View style={styles.trailingBarButtonContainer}>
-            <IconButton onPress={onSearchPress} iconSource="search" />
             <IconButton onPress={() => {}} iconSource="plus" />
           </View>
         </View>

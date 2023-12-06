@@ -1,15 +1,13 @@
 import React from 'react';
 import { TextInput, View } from 'react-native';
 
-import Button from 'src/components/Button';
+import Button from 'app/components/Button';
 
 import styles from './SearchScreen.style';
 
-type SearchScreenProps = {
-  onCancelPress: () => void;
-};
+type SearchScreenProps = object;
 
-const SearchScreen: React.FC<SearchScreenProps> = ({ onCancelPress }) => {
+const SearchScreen: React.FC<SearchScreenProps> = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -18,7 +16,7 @@ const SearchScreen: React.FC<SearchScreenProps> = ({ onCancelPress }) => {
           placeholderTextColor={'grey'}
           style={styles.input}
         />
-        <Button title="Cancel" onPress={onCancelPress} />
+        <Button title="Cancel" onPress={() => {}} />
       </View>
     </View>
   );

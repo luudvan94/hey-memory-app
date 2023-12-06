@@ -1,40 +1,8 @@
-import { Amplify } from 'aws-amplify';
-import { useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import HotStateNavigator from 'app/navigation/hotStateNavigator';
+import { withTheme } from 'app/styles/hoc/withTheme';
 
-import amplifyconfig from 'src/amplifyconfiguration.json';
-import HomeScreen from 'src/screens/home/HomeScreen';
-import SearchScreen from 'src/screens/search/SearchScreen';
-
-Amplify.configure(amplifyconfig);
-
-export default function App() {
-  const [showSearch, setShowSearch] = useState(false);
-
-  const onSearchPress = () => {
-    setShowSearch(true);
-  };
-
-  const onCancelPress = () => {
-    setShowSearch(false);
-  };
-
-  return (
-    <SafeAreaView style={styles.container}>
-      {showSearch ? (
-        <SearchScreen onCancelPress={onCancelPress} />
-      ) : (
-        <HomeScreen onSearchPress={onSearchPress} />
-      )}
-    </SafeAreaView>
-  );
+function App() {
+  return <HotStateNavigator />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
+export default withTheme(App);
