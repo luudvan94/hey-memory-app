@@ -15,7 +15,8 @@ export const defaultStyles = ({ colors, scalingNumber }: Theme) => {
     header: {
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      gap: 5 * scalingNumber
     },
     options: {
       display: 'flex',

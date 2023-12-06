@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { Theme } from 'app/styles/theme';
 
-export const defaultStyle = ({ colors }: Theme) => {
+export const defaultStyle = ({ colors, scalingNumber }: Theme) => {
   return StyleSheet.create({
     container: {
       display: 'flex',
@@ -10,13 +10,13 @@ export const defaultStyle = ({ colors }: Theme) => {
       borderWidth: 1,
       borderColor: colors.tertiary,
       borderRadius: 10,
-      padding: 15,
+      padding: 15 * scalingNumber,
       alignItems: 'center',
       gap: 5
     },
     icon: {
-      width: 34,
-      height: 34
+      width: 34 * scalingNumber,
+      height: 34 * scalingNumber
     }
   });
 };

@@ -9,7 +9,8 @@ import { useLogin } from './useLogin';
 
 const LoginScreen: React.FC = () => {
   const {
-    styles: { loginScreenStyle: styles }
+    styles: { loginScreenStyle: styles },
+    content: { login: content }
   } = useColdStateContext();
 
   const { loginOptions } = useLogin();
@@ -17,9 +18,9 @@ const LoginScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text title1>Log in to Hey Memory</Text>
+        <Text title1>{content.title}</Text>
         <Text body secondary>
-          Manage your account and more
+          {content.description}
         </Text>
       </View>
 
