@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import HomeScreen from 'app/screens/home/homeScreen';
 import SearchScreen from 'app/screens/search/searchScreen';
+import { Screens } from 'app/utils/screens.const';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,8 +15,8 @@ function HotStateNavigator() {
           tabBarShowLabel: false
         }}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SearchScreen} />
+        <Tab.Screen name={Screens.HOME} component={HomeScreen} />
+        <Tab.Screen name={Screens.SEARCH} component={SearchScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

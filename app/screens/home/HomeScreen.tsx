@@ -1,7 +1,7 @@
 import { FlatList, Text, View } from 'react-native';
 
 import IconButton from 'app/components/IconButton';
-import { useHotStateContext } from 'app/context/hotstate/hotstate.context';
+import { useHotStateContext } from 'app/context/hotState/hotState.context';
 
 type HomeScreenProps = object;
 

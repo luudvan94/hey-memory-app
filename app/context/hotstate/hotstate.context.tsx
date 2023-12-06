@@ -1,6 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 
-import { HotStateStyles, defaultStyles } from './hotstate.style';
+import HotStateNavigator from 'app/navigation/hotStateNavigator';
+
+import { HotStateStyles, defaultStyles } from './hotState.style';
 import { useThemeProvider } from '../theme/theme.context';
 
 type HotStateContextValue = {
@@ -11,7 +13,7 @@ export const HotStateContext = React.createContext<
   HotStateContextValue | undefined
 >(undefined);
 
-const HotStateProvider = ({ children }) => {
+const HotStateProvider = () => {
   const theme = useThemeProvider();
   const initialValue: HotStateContextValue = useMemo(() => {
     return { styles: defaultStyles(theme) };
@@ -19,7 +21,7 @@ const HotStateProvider = ({ children }) => {
 
   return (
     <HotStateContext.Provider value={initialValue}>
-      {children}
+      <HotStateNavigator />
     </HotStateContext.Provider>
   );
 };

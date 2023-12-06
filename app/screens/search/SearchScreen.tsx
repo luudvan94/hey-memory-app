@@ -2,7 +2,7 @@ import React from 'react';
 import { TextInput, View } from 'react-native';
 
 import Button from 'app/components/Button';
-import { useHotStateContext } from 'app/context/hotstate/hotstate.context';
+import { useHotStateContext } from 'app/context/hotState/hotState.context';
 
 type SearchScreenProps = object;
 
