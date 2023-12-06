@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useMemo } from 'react';
 import { useColorScheme } from 'react-native';
 
-import { Theme, colorSchemeThemes } from './theme';
+import { Theme, colorSchemeThemes } from '../../styles/theme/theme';
 
 const initialTheme: Theme = colorSchemeThemes.light;
 
@@ -24,7 +24,7 @@ const ThemeProvider = ({ children }) => {
   );
 };
 
-const useTheme = (): Theme => {
+const useThemeProvider = (): Theme => {
   const context = useContext(ThemeContext);
 
   if (!context) {
@@ -34,4 +34,4 @@ const useTheme = (): Theme => {
   return context.theme;
 };
 
-export { ThemeProvider, useTheme };
+export { ThemeProvider, useThemeProvider };

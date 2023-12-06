@@ -1,4 +1,4 @@
-import { ThemeProvider } from '../theme';
+import { ThemeProvider } from '../styles/theme';
 
 const withTheme = (Component) => {
   return (props) => (

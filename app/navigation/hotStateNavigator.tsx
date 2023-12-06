@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 
-import HomeScreen from 'app/screens/home/HomeScreen';
-import SearchScreen from 'app/screens/search/SearchScreen';
+import HomeScreen from 'app/screens/home/homeScreen';
+import SearchScreen from 'app/screens/search/searchScreen';
 
 const Tab = createBottomTabNavigator();
 

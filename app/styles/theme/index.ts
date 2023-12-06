@@ -1,2 +1,2 @@
+export * from '../../context/theme/theme.context';
 export * from './theme';
-export * from './themeContext';

@@ -1,12 +1,15 @@
 import { FlatList, Text, View } from 'react-native';
 
 import IconButton from 'app/components/IconButton';
-
-import styles from './HomeScreen.style';
+import { useHotStateContext } from 'app/context/hotstate/hotstate.context';
 
 type HomeScreenProps = object;
 
 const HomeScreen: React.FC<HomeScreenProps> = (props) => {
+  const {
+    styles: { homeScreenStyle: styles }
+  } = useHotStateContext();
+
   const events = [
     { id: 1, title: 'Event 1' },
     { id: 2, title: 'Event 2' },

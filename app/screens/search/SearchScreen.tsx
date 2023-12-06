@@ -2,12 +2,15 @@ import React from 'react';
 import { TextInput, View } from 'react-native';
 
 import Button from 'app/components/Button';
-
-import styles from './SearchScreen.style';
+import { useHotStateContext } from 'app/context/hotstate/hotstate.context';
 
 type SearchScreenProps = object;
 
 const SearchScreen: React.FC<SearchScreenProps> = (props) => {
+  const {
+    styles: { searchScreenStyle: styles }
+  } = useHotStateContext();
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
