@@ -1,7 +1,10 @@
-import { FlatList, Text, View } from 'react-native';
+import { FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { IconButton } from 'app/components';
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
+
+import Header from './components/header';
+import { Tweet } from './components/tweet';
 
 type HomeScreenProps = object;
 
@@ -18,33 +21,19 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
   ];
 
   const renderEventItem = ({ item }) => {
-    return (
-      <View style={styles.event}>
-        <Text style={styles.eventContent}>{item.title}</Text>
-        <Text style={styles.eventDate}>mon, dec 4</Text>
-      </View>
-    );
+    return <Tweet />;
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.topBarContainer}>
-          <IconButton onPress={() => {}} iconSource="calendar" />
-          <View style={styles.trailingBarButtonContainer}>
-            <IconButton onPress={() => {}} iconSource="plus" />
-          </View>
-        </View>
-        <Text style={styles.title}>4th December 2023</Text>
-      </View>
-
+    <SafeAreaView style={styles.container}>
       <FlatList
+        ListHeaderComponent={<Header />}
         style={styles.eventsList}
         data={events}
         renderItem={renderEventItem}
         keyExtractor={(item) => item.id.toString()}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

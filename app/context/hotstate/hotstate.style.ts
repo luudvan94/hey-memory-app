@@ -1,3 +1,5 @@
+import { defaultStyle as homeHeaderStyle } from 'app/screens/home/components/header.style';
+import { defaultStyle as tweetStyle } from 'app/screens/home/components/tweet.style';
 import { defaultStyle as homeScreenStyle } from 'app/screens/home/homeScreen.style';
 import { defaultStyle as searchScreenStyle } from 'app/screens/search/searchScreen.style';
 import { defaultStyle as tweetScreenStyle } from 'app/screens/tweet/tweetScreen.style';
@@ -9,7 +11,9 @@ export const defaultStyles = (theme: Theme) => {
     homeScreenStyle: homeScreenStyle(theme),
     searchScreenStyle: searchScreenStyle(theme),
     userScreenStyle: userScreenStyle(theme),
-    tweetScreenStyle: tweetScreenStyle(theme)
+    tweetScreenStyle: tweetScreenStyle(theme),
+    tweetStyle: tweetStyle(theme),
+    homeHeaderStyle: homeHeaderStyle(theme)
   };
 };
 

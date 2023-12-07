@@ -7,13 +7,21 @@ import TweetScreen from 'app/screens/tweet/tweetScreen';
 import { UserScreen } from 'app/screens/user/userScreen';
 import { Screens } from 'app/utils/screens.const';
 
+import { useThemeProvider } from '../theme/theme.context';
+
 const Tab = createBottomTabNavigator();
 
 function HotStateNavigator() {
+  const theme = useThemeProvider();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarShowLabel: false,
+        headerShown: false,
+        tabBarStyle: {
+          borderTopWidth: 0
+        },
+        tabBarActiveTintColor: theme.colors.primary,
         tabBarIcon: ({ focused, color, size }) => {
           switch (route.name) {
             case Screens.HOME:
@@ -21,6 +29,7 @@ function HotStateNavigator() {
                 <Ionicons
                   name={`home${!focused ? '-outline' : ''}`}
                   size={size}
+                  color={color}
                 />
               );
             case Screens.SEARCH:
@@ -28,13 +37,15 @@ function HotStateNavigator() {
                 <Ionicons
                   name={`search${!focused ? '-outline' : ''}`}
                   size={size}
+                  color={color}
                 />
               );
             case Screens.TWEET:
               return (
                 <Ionicons
-                  name={`add${!focused ? '-outline' : ''}`}
+                  name={`add-circle${!focused ? '-outline' : ''}`}
                   size={size}
+                  color={color}
                 />
               );
             case Screens.USER:
@@ -42,6 +53,7 @@ function HotStateNavigator() {
                 <Ionicons
                   name={`person${!focused ? '-outline' : ''}`}
                   size={size}
+                  color={color}
                 />
               );
             default:

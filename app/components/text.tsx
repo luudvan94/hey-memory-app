@@ -28,7 +28,7 @@ const textStyle = {
     fontSize: 16 * scalingNumber
   }),
   callout: ({ scalingNumber }: Theme) => ({
-    fontSize: 15 * scalingNumber
+    fontSize: 13 * scalingNumber
   }),
   secondary: ({ colors }: Theme) => ({
     color: colors.secondary
