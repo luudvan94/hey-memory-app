@@ -1,3 +1,3 @@
-import { ICONS } from 'app/utils/icons';
+import { Icons } from 'app/utils/icons';
 
-export type ColdStateIcons = Pick<typeof ICONS, 'GOOGLE' | 'APPLE'>;
+export type ColdStateIcons = Pick<typeof Icons, 'GOOGLE' | 'APPLE'>;

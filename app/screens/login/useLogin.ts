@@ -1,7 +1,7 @@
 import { useAuthProvider } from 'app/context/auth/auth.context';
 import { LoginContent } from 'app/context/coldState/coldState.content';
 import { useColdStateContext } from 'app/context/coldState/coldState.context';
-import { ICONS, Icon } from 'app/utils/icons';
+import { Icon, Icons } from 'app/utils/icons';
 
 interface Options {
   icon: Icon;
@@ -20,8 +20,8 @@ export const useLogin = () => {
   };
 
   const loginOptions: Options[] = [
-    { icon: ICONS.APPLE, label: content.apple, handler },
-    { icon: ICONS.GOOGLE, label: content.google, handler }
+    { icon: Icons.APPLE, label: content.apple, handler },
+    { icon: Icons.GOOGLE, label: content.google, handler }
   ];
 
   return {
