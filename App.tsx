@@ -1,9 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { useState } from 'react';
 
-import { ColdStateProvider } from 'app/context/coldState/coldState.context';
-import { HotStateProvider } from 'app/context/hotState/hotState.context';
+import AppInner from 'app/appInner';
+import { AuthProvider } from 'app/context/auth/auth.context';
 import { ThemeProvider } from 'app/styles/theme';
 
 function App() {
@@ -12,8 +11,6 @@ function App() {
     'Inter-Black': require('./assets/fonts/Inter-Light.otf')
   });
 
-  const [loggedIn] = useState(false);
-
   if (!fontsLoaded) {
     return null;
   }
@@ -21,7 +18,9 @@ function App() {
   return (
     <NavigationContainer>
       <ThemeProvider>
-        {loggedIn ? <HotStateProvider /> : <ColdStateProvider />}
+        <AuthProvider>
+          <AppInner />
+        </AuthProvider>
       </ThemeProvider>
     </NavigationContainer>
   );

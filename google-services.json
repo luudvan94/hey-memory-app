@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "430424999419",
+    "project_id": "hey-memory",
+    "storage_bucket": "hey-memory.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430424999419:android:be047d60cb577d6761775e",
+        "android_client_info": {
+          "package_name": "com.luuvan.heymemory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwWU8UtYeBDmguqLBW0RkMJhrU5Vl86eE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
