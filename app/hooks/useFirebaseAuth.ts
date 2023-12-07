@@ -10,14 +10,12 @@ auth().useEmulator('http://127.0.0.1:9099');
 const useFirebaseAuth = () => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState<User | undefined>(undefined);
+  const [user, setUser] = useState<User | null>(null);
   const service = new FirebaseAuthService();
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUser(user);
-      }
+      setUser(user);
 
       if (initializing) setInitializing(false);
     });

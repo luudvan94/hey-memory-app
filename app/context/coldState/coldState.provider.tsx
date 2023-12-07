@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ColdStateNavigator from 'app/navigation/coldStateNavigator';
+import ColdStateNavigator from 'app/context/coldState/coldState.navigator';
 
 import { content } from './coldState.content';
 import { ColdStateContext, ColdStateContextValue } from './coldState.context';

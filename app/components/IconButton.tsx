@@ -1,6 +1,7 @@
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+
+import { Button } from './Button';
 
 type IconButtonProps = {
   onPress: () => void;
@@ -9,16 +10,10 @@ type IconButtonProps = {
 
 const IconButton: React.FC<IconButtonProps> = ({ onPress, iconSource }) => {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <Button onPress={onPress}>
       <FontAwesome name={iconSource} size={24} color="black" />
-    </Pressable>
+    </Button>
   );
 };
 
-const styles = StyleSheet.create({
-  button: {
-    padding: 10
-  }
-});
-
-export default IconButton;
+export { IconButton };

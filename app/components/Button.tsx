@@ -1,16 +1,30 @@
-import { Pressable, Text } from 'react-native';
+import { Pressable, StyleSheet } from 'react-native';
 
 type ButtonProps = {
-  title: string;
   onPress: () => void;
+  children: React.ReactNode;
+  overrideStyles?: object;
 };
 
-const Button: React.FC<ButtonProps> = ({ title, onPress }) => {
+const Button: React.FC<ButtonProps> = ({
+  onPress,
+  children,
+  overrideStyles
+}) => {
   return (
-    <Pressable onPress={onPress}>
-      <Text>{title}</Text>
+    <Pressable
+      style={{ ...styles.button, ...overrideStyles }}
+      onPress={onPress}
+    >
+      {children}
     </Pressable>
   );
 };
 
-export default Button;
+const styles = StyleSheet.create({
+  button: {
+    padding: 10
+  }
+});
+
+export { Button };

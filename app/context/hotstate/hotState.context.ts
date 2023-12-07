@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 
+import { HotStateContent } from './hotState.content';
 import { HotStateStyles } from './hotState.style';
 
 type HotStateContextValue = {
   styles: HotStateStyles;
+  content: HotStateContent;
 };
 
 const HotStateContext = React.createContext<HotStateContextValue | undefined>(

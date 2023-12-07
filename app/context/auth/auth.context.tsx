@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 type AuthContextValue = {
   loggedIn: boolean;
   service: AuthService;
-  user?: User;
+  user: User | null;
 };
 
 const AuthContext = React.createContext<AuthContextValue | undefined>(
