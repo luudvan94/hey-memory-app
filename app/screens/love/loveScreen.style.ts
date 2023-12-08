@@ -1,7 +1,3 @@
-import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-import { Theme } from 'app/styles/theme';
-
-export const defaultStyle = (theme: Theme) => {
-  return StyleSheet.create({});
-};
+export default makeStyles((theme, props) => ({}));

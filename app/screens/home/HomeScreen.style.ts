@@ -1,21 +1,17 @@
-import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-import { Theme } from 'app/styles/theme';
+export default makeStyles(({ spacing }, props) => ({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#fff'
+  },
 
-export const defaultStyle = ({ scalingNumber }: Theme) => {
-  return StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      width: '100%',
-      height: '100%',
-      backgroundColor: '#fff'
-    },
-
-    eventsList: {
-      width: '100%',
-      height: '100%'
-    }
-  });
-};
+  eventsList: {
+    width: '100%',
+    height: '100%'
+  }
+}));

@@ -1,13 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-import { Theme } from 'app/styles/theme';
-
-export const defaultStyle = (theme: Theme) => {
-  return StyleSheet.create({
-    container: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }
-  });
-};
+export default makeStyles((theme, props) => ({
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+}));

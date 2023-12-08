@@ -1,17 +1,19 @@
 import { useHeaderHeight } from '@react-navigation/elements';
+import { Button } from '@rneui/themed';
 import { KeyboardAvoidingView, Platform, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
-import { Button, Text } from 'app/components';
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
 
+import useStyles from './tweetScreen.style';
 import { useTweetScreen } from './useTweetScreen';
 
 const TweetScreen: React.FC = () => {
   const {
-    styles: { tweetScreenStyle: styles },
     content: { tweet: content }
   } = useHotStateContext();
+
+  const styles = useStyles();
 
   const height = useHeaderHeight();
   const { text, setText } = useTweetScreen();
@@ -31,11 +33,7 @@ const TweetScreen: React.FC = () => {
           onChangeText={(val) => setText(val)}
         />
 
-        <Button onPress={() => {}} overrideStyles={styles.postButton}>
-          <Text callout style={styles.post}>
-            {content.post}
-          </Text>
-        </Button>
+        <Button title={content.post} buttonStyle={styles.postButton} />
       </View>
     </KeyboardAvoidingView>
   );

@@ -3,8 +3,9 @@ import { Pressable, View } from 'react-native';
 
 import { Text } from 'app/components';
 import { LoginContent } from 'app/context/coldState/coldState.content';
-import { useColdStateContext } from 'app/context/coldState/coldState.context';
 import { Icon } from 'app/utils/icons';
+
+import useStyles from './loginOption.style';
 
 interface LoginOptionProps {
   icon: Icon;
@@ -13,9 +14,7 @@ interface LoginOptionProps {
 }
 
 const LoginOption: React.FC<LoginOptionProps> = ({ icon, label, onPress }) => {
-  const {
-    styles: { loginOptionStyle: styles }
-  } = useColdStateContext();
+  const styles = useStyles();
 
   return (
     <Pressable onPress={onPress}>

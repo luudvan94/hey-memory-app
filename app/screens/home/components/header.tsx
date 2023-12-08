@@ -2,12 +2,11 @@ import { Ionicons } from '@expo/vector-icons';
 import { View } from 'react-native';
 
 import { Button, Text } from 'app/components';
-import { useHotStateContext } from 'app/context/hotState/hotState.context';
+
+import useStyles from './header.style';
 
 const Header: React.FC = () => {
-  const {
-    styles: { homeHeaderStyle: styles }
-  } = useHotStateContext();
+  const styles = useStyles();
   return (
     <View style={styles.container}>
       <Ionicons name="arrow-undo-circle" size={25} />

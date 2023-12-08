@@ -1,20 +1,22 @@
+import { Button } from '@rneui/themed';
 import { View } from 'react-native';
 
-import { Button, Text } from 'app/components';
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
+
+import useStyles from './tweetHeader.style';
 
 const TweetHeader = () => {
   const {
-    styles: { tweetHeaderStyle: styles },
     content: { tweet: content }
   } = useHotStateContext();
+  const styles = useStyles();
   return (
     <View style={styles.container}>
-      <View style={styles.cancel}>
-        <Button onPress={() => {}}>
-          <Text body>{content.cancel}</Text>
-        </Button>
-      </View>
+      <Button
+        title={content.cancel}
+        titleStyle={styles.cancel}
+        buttonStyle={styles.cancelContainer}
+      />
     </View>
   );
 };

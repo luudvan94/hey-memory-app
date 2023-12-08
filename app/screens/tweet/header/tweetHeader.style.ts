@@ -1,24 +1,21 @@
-import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-import { Theme } from 'app/styles/theme';
-
-export const defaultStyle = ({ colors }: Theme) => {
-  return StyleSheet.create({
-    container: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      width: '100%',
-      height: 50,
-      borderBottomWidth: 1,
-      borderBottomColor: colors.tertiary
-    },
-    cancel: {
-      flex: 1
-    },
-    title: {
-      alignSelf: 'center'
-    }
-  });
-};
+export default makeStyles(({ colors }, props) => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    width: '100%',
+    height: 50,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.grey4
+  },
+  cancel: {
+    backgroundColor: 'transparent',
+    color: colors.secondary
+  },
+  cancelContainer: {
+    backgroundColor: 'transparent'
+  }
+}));

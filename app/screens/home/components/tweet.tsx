@@ -1,15 +1,16 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 
 import { Text } from 'app/components';
-import { useHotStateContext } from 'app/context/hotState/hotState.context';
-import { useThemeProvider } from 'app/styles/theme';
+
+import useStyles from './tweet.style';
 
 const Tweet: React.FC = () => {
   const {
-    styles: { tweetStyle: styles }
-  } = useHotStateContext();
-  const { colors } = useThemeProvider();
+    theme: { colors }
+  } = useTheme();
+  const styles = useStyles();
 
   return (
     <View>
@@ -32,12 +33,12 @@ const Tweet: React.FC = () => {
                 <Ionicons
                   name="bookmark-outline"
                   size={20}
-                  color={colors.secondary}
+                  color={colors.grey2}
                 />
                 <Ionicons
                   name="chatbubble-ellipses-outline"
                   size={20}
-                  color={colors.secondary}
+                  color={colors.grey2}
                 />
               </View>
               <Text callout secondary>

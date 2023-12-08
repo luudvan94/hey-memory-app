@@ -1,3 +1,4 @@
+import { Colors, Theme, useTheme } from '@rneui/themed';
 import {
   Text as ReactText,
   StyleProp,
@@ -5,33 +6,32 @@ import {
   TextStyle
 } from 'react-native';
 
-import { Theme, useThemeProvider } from 'app/styles/theme';
-
+type ColorWithTheme = { colors: Colors } & Theme;
 export const textStyle = {
-  largeTitle: ({ scalingNumber }: Theme) => ({
-    fontSize: 34 * scalingNumber
+  largeTitle: ({ spacing }: ColorWithTheme) => ({
+    fontSize: 34
   }),
-  title1: ({ scalingNumber }: Theme) => ({
-    fontSize: 28 * scalingNumber
+  title1: ({ spacing }: ColorWithTheme) => ({
+    fontSize: 28
   }),
-  title2: ({ scalingNumber }: Theme) => ({
-    fontSize: 22 * scalingNumber
+  title2: ({ spacing }: ColorWithTheme) => ({
+    fontSize: 22
   }),
-  title3: ({ scalingNumber }: Theme) => ({
-    fontSize: 20 * scalingNumber
+  title3: ({ spacing }: ColorWithTheme) => ({
+    fontSize: 20
   }),
-  headline: ({ scalingNumber }: Theme) => ({
-    fontSize: 17 * scalingNumber,
+  headline: ({ spacing }: ColorWithTheme) => ({
+    fontSize: 17,
     fontweight: '600'
   }),
-  body: ({ scalingNumber }: Theme) => ({
-    fontSize: 16 * scalingNumber
+  body: ({ spacing }: ColorWithTheme) => ({
+    fontSize: 16
   }),
-  callout: ({ scalingNumber }: Theme) => ({
-    fontSize: 13 * scalingNumber
+  callout: ({ spacing }: ColorWithTheme) => ({
+    fontSize: 13
   }),
-  secondary: ({ colors }: Theme) => ({
-    color: colors.secondary
+  secondary: ({ colors }: ColorWithTheme) => ({
+    color: colors.grey2
   })
 };
 
@@ -45,7 +45,7 @@ type TextProps = {
 
 const Text: React.FC<TextProps> = (props) => {
   const { children, style, ...styleKeys } = props;
-  const theme = useThemeProvider();
+  const { theme } = useTheme();
 
   const stylesToApply = Object.keys(styleKeys)
     .filter((key) => styleKeys[key as keyof typeof styleKeys])

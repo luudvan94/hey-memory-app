@@ -1,6 +1,7 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
+import { useTheme } from '@rneui/themed';
 
 import HomeScreen from 'app/screens/home/homeScreen';
 import LoveScreen from 'app/screens/love/loveScreen';
@@ -10,13 +11,11 @@ import TweetScreen from 'app/screens/tweet/tweetScreen';
 import { UserScreen } from 'app/screens/user/userScreen';
 import { Screens } from 'app/utils/screens.const';
 
-import { useThemeProvider } from '../theme/theme.context';
-
 const Tab = createBottomTabNavigator();
 const Root = createStackNavigator();
 
 const AppTabs = () => {
-  const theme = useThemeProvider();
+  const { theme } = useTheme();
 
   return (
     <Tab.Navigator

@@ -1,10 +1,8 @@
 import React from 'react';
 
 import { ColdStateContent } from './coldState.content';
-import { ColdStateStyles } from './coldState.style';
 
 type ColdStateContextValue = {
-  styles: ColdStateStyles;
   content: ColdStateContent;
 };
 

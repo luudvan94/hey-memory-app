@@ -4,12 +4,14 @@ import { Button, Text } from 'app/components';
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
 
 import { useUserScreen } from './useUserScreen';
+import useStyles from './userScreen.style';
 
 const UserScreen: React.FC = () => {
   const {
-    styles: { userScreenStyle: styles },
     content: { user: content }
   } = useHotStateContext();
+
+  const styles = useStyles();
 
   const { logout } = useUserScreen();
 

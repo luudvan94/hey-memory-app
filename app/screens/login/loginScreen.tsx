@@ -5,14 +5,14 @@ import { Text } from 'app/components';
 import { useColdStateContext } from 'app/context/coldState/coldState.context';
 
 import LoginOption from './components/loginOption';
+import useStyles from './loginScreen.style';
 import { useLogin } from './useLogin';
 
 const LoginScreen: React.FC = () => {
   const {
-    styles: { loginScreenStyle: styles },
     content: { login: content }
   } = useColdStateContext();
-
+  const styles = useStyles();
   const { loginOptions } = useLogin();
 
   return (

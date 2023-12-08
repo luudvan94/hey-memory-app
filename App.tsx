@@ -1,10 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native';
+import { ThemeProvider } from '@rneui/themed';
 import { useFonts } from 'expo-font';
-import { LogBox } from 'react-native';
+import { LogBox, useColorScheme } from 'react-native';
 
 import AppInner from 'app/appInner';
 import { AuthProvider } from 'app/context/auth/auth.context';
-import { ThemeProvider } from 'app/styles/theme';
+import { theme } from 'app/styles/theme';
 
 LogBox.ignoreLogs(['Sending...']);
 
@@ -14,13 +15,16 @@ function App() {
     'Inter-Black': require('./assets/fonts/Inter-Light.otf')
   });
 
+  const scheme = useColorScheme();
+  theme.mode = scheme === 'dark' ? 'dark' : 'light';
+
   if (!fontsLoaded) {
     return null;
   }
 
   return (
     <NavigationContainer>
-      <ThemeProvider>
+      <ThemeProvider theme={theme}>
         <AuthProvider>
           <AppInner />
         </AuthProvider>
