@@ -9,8 +9,10 @@ export const defaultStyle = ({ colors, scalingNumber }: Theme) => {
       flexDirection: 'row',
       alignItems: 'flex-start',
       width: '100%',
-      gap: 10 * scalingNumber,
-      paddingVertical: 15 * scalingNumber
+      gap: 25 * scalingNumber,
+      paddingTop: 12 * scalingNumber,
+      paddingBottom: 5 * scalingNumber,
+      paddingLeft: 20 * scalingNumber
     },
     content: {
       flex: 1,
@@ -18,14 +20,24 @@ export const defaultStyle = ({ colors, scalingNumber }: Theme) => {
       gap: 20 * scalingNumber,
       paddingRight: 10 * scalingNumber
     },
+    actions: {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+      gap: 10 * scalingNumber,
+      marginBottom: 5 * scalingNumber
+    },
     footer: {
       display: 'flex',
       flexDirection: 'row',
+      alignItems: 'center',
       justifyContent: 'space-between'
     },
     dateTime: {
       display: 'flex',
       flexDirection: 'row',
+      alignItems: 'center',
       gap: 20 * scalingNumber
     },
     action: {

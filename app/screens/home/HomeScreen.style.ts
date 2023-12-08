@@ -15,8 +15,7 @@ export const defaultStyle = ({ scalingNumber }: Theme) => {
 
     eventsList: {
       width: '100%',
-      height: '100%',
-      paddingLeft: 10 * scalingNumber
+      height: '100%'
     }
   });
 };

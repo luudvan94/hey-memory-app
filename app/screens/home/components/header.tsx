@@ -1,3 +1,4 @@
+import { Ionicons } from '@expo/vector-icons';
 import { View } from 'react-native';
 
 import { Button, Text } from 'app/components';
@@ -9,9 +10,11 @@ const Header: React.FC = () => {
   } = useHotStateContext();
   return (
     <View style={styles.container}>
-      <Button onPress={() => {}} overrideStyles={styles.header}>
+      <Ionicons name="arrow-undo-circle" size={25} />
+      <Button onPress={() => {}}>
         <Text title2>thu, 7 dec 2023</Text>
       </Button>
+      <Ionicons name="arrow-redo-circle" size={25} />
     </View>
   );
 };

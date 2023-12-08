@@ -1,12 +1,14 @@
 import { StyleSheet } from 'react-native';
 
+import { textStyle } from 'app/components';
 import { Theme } from 'app/styles/theme';
 
 export const defaultStyle = (theme: Theme) => {
   return StyleSheet.create({
     container: {
       width: '100%',
-      height: '100%'
+      height: '100%',
+      backgroundColor: 'white'
     },
     header: {
       display: 'flex',
@@ -18,11 +20,16 @@ export const defaultStyle = (theme: Theme) => {
       paddingHorizontal: 10,
       height: 50
     },
+    searchBar: {
+      borderRadius: 20 * theme.scalingNumber,
+      backgroundColor: theme.colors.quaternary,
+      height: '80%'
+    },
     input: {
-      flex: 2,
-      height: '100%',
-      backgroundColor: '#f0f0f0',
-      padding: 5
+      ...textStyle.body(theme)
+    },
+    cancelButton: {
+      color: theme.colors.secondary
     }
   });
 };

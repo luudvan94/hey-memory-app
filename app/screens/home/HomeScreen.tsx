@@ -27,6 +27,7 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
+        showsVerticalScrollIndicator={false}
         ListHeaderComponent={<Header />}
         style={styles.eventsList}
         data={events}

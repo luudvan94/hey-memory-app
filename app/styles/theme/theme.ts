@@ -1,6 +1,12 @@
 import { ColorSchemeName } from 'react-native';
 
-import { black, darkGrey, lightGrey, superLightGrey } from 'app/utils/colors';
+import {
+  black,
+  darkGrey,
+  lightGrey,
+  superLightGrey,
+  superSuperLightGrey
+} from 'app/utils/colors';
 
 type Theme = {
   colors: {
@@ -9,6 +15,8 @@ type Theme = {
     secondary?: string;
     // 3rd level
     tertiary?: string;
+    // 4th level
+    quaternary?: string;
   };
   scalingNumber: number;
 };
@@ -22,7 +30,8 @@ const colorSchemeThemes: Record<
       background: lightGrey,
       primary: black,
       secondary: darkGrey,
-      tertiary: superLightGrey
+      tertiary: superLightGrey,
+      quaternary: superSuperLightGrey
     },
     scalingNumber: 1
   },

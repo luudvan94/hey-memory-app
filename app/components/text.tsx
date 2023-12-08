@@ -7,7 +7,7 @@ import {
 
 import { Theme, useThemeProvider } from 'app/styles/theme';
 
-const textStyle = {
+export const textStyle = {
   largeTitle: ({ scalingNumber }: Theme) => ({
     fontSize: 34 * scalingNumber
   }),
