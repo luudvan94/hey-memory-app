@@ -5,7 +5,8 @@ import { textStyle } from 'app/components';
 export default makeStyles((theme, props) => ({
   container: {
     flex: 1,
-    margin: theme.spacing.lg,
+    marginHorizontal: theme.spacing.lg,
+    marginTop: theme.spacing.xl,
     justifyContent: 'space-between'
   },
   textInput: {
@@ -17,6 +18,20 @@ export default makeStyles((theme, props) => ({
     backgroundColor: theme.colors.primary,
     borderRadius: 40,
     alignSelf: 'flex-end'
+  },
+  footer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
+  tools: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  buttonStyle: {
+    backgroundColor: 'transparent'
   },
   post: {
     ...textStyle.body(theme)

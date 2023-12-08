@@ -1,10 +1,14 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@rneui/themed';
+import { Image } from 'expo-image';
 import { View } from 'react-native';
 
 import { Text } from 'app/components';
 
 import useStyles from './tweet.style';
+
+const blurhash =
+  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
 
 const Tweet: React.FC = () => {
   const {
@@ -16,13 +20,16 @@ const Tweet: React.FC = () => {
     <View>
       <View style={styles.container}>
         <View style={styles.content}>
-          <Text headline>
-            Maximum pool size of ThreadPoolExecutor. Defaults to 1. Larger
-            values typically improve performance when executing large numbers of
-            asynchronous tasks, e.g. Firestore queries. Setting this value to 0
-            completely disables the pooled executor and all tasks execute in
-            serial per module.
-          </Text>
+          <Text headline>eating a lot of food and drinking a lot of water</Text>
+
+          <View style={styles.imageContainer}>
+            <Image
+              style={styles.image}
+              placeholder={blurhash}
+              contentFit="cover"
+              source={'https://picsum.photos/seed/696/3000/2000'}
+            />
+          </View>
 
           <View style={styles.footer}>
             <Text callout secondary>

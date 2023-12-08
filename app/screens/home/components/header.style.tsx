@@ -1,6 +1,8 @@
 import { makeStyles } from '@rneui/themed';
 
-export default makeStyles(({ spacing }, props) => ({
+import { textStyle } from 'app/components';
+
+export default makeStyles((theme, props) => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
@@ -8,5 +10,12 @@ export default makeStyles(({ spacing }, props) => ({
     height: 50,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  buttonStyle: {
+    backgroundColor: 'transparent'
+  },
+  time: {
+    color: theme.colors.grey1,
+    ...textStyle.title2(theme)
   }
 }));
