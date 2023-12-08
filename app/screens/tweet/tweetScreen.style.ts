@@ -19,6 +19,6 @@ export default makeStyles((theme, props) => ({
     alignSelf: 'flex-end'
   },
   post: {
-    color: theme.colors.background
+    ...textStyle.body(theme)
   }
 }));

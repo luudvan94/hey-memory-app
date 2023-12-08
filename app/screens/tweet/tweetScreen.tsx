@@ -26,6 +26,7 @@ const TweetScreen: React.FC = () => {
     >
       <View style={styles.container}>
         <TextInput
+          multiline
           autoFocus
           style={styles.textInput}
           value={text}
@@ -33,7 +34,11 @@ const TweetScreen: React.FC = () => {
           onChangeText={(val) => setText(val)}
         />
 
-        <Button title={content.post} buttonStyle={styles.postButton} />
+        <Button
+          title={content.post}
+          buttonStyle={styles.postButton}
+          titleStyle={styles.post}
+        />
       </View>
     </KeyboardAvoidingView>
   );

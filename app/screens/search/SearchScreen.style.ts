@@ -6,7 +6,8 @@ export default makeStyles((theme, props) => ({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    paddingTop: theme.spacing.lg
   },
   header: {
     display: 'flex',
@@ -27,6 +28,10 @@ export default makeStyles((theme, props) => ({
     ...textStyle.body(theme)
   },
   cancelButton: {
-    color: theme.colors.grey2
+    color: theme.colors.grey0,
+    ...textStyle.callout(theme)
+  },
+  searchContainer: {
+    flex: 1
   }
 }));

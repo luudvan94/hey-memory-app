@@ -1,26 +1,20 @@
 import { makeStyles } from '@rneui/themed';
 
-import { textStyle } from 'app/components';
-
 export default makeStyles((theme, props) => ({
   container: {
     display: 'flex',
-    paddingLeft: theme.spacing.md
+    flexDirection: 'row',
+    alignItems: 'center'
   },
-  header: {
+  content: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: theme.spacing.lg
+    marginBottom: theme.spacing.lg,
+    marginTop: theme.spacing.lg
   },
-  clearButton: {
+  buttonStyle: {
     backgroundColor: 'transparent'
-  },
-  clearTitle: {
-    color: theme.colors.grey0,
-    ...textStyle.bold(theme),
-    ...textStyle.callout(theme)
-  },
-  listContainer: {}
+  }
 }));

@@ -1,6 +1,8 @@
 import { makeStyles } from '@rneui/themed';
 
-export default makeStyles(({ colors }, props) => ({
+import { textStyle } from 'app/components';
+
+export default makeStyles((theme, props) => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
@@ -9,11 +11,12 @@ export default makeStyles(({ colors }, props) => ({
     width: '100%',
     height: 50,
     borderBottomWidth: 1,
-    borderBottomColor: colors.grey4
+    borderBottomColor: theme.colors.grey4
   },
   cancel: {
     backgroundColor: 'transparent',
-    color: colors.secondary
+    color: theme.colors.grey2,
+    ...textStyle.body(theme)
   },
   cancelContainer: {
     backgroundColor: 'transparent'

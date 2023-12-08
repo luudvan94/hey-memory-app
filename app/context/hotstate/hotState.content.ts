@@ -7,6 +7,12 @@ export const content = {
     newTweet: 'New Tweet',
     placeholder: 'Start your tweet...',
     post: 'Post'
+  },
+  search: {
+    search: 'Search',
+    recent: 'Recent',
+    clear: 'Clear',
+    typeHere: 'Type here...'
   }
 };
 

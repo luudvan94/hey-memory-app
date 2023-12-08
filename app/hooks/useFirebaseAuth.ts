@@ -4,8 +4,9 @@ import { useEffect, useState } from 'react';
 import { FirebaseAuthService } from 'app/context/auth/auth.service';
 import User from 'app/models/user';
 
-//TODO: Remove this line when you're ready to use Firebase
-auth().useEmulator('http://127.0.0.1:9099');
+if (process.env.EXPO_PUBLIC_DEV) {
+  auth().useEmulator('http://127.0.0.1:9099');
+}
 
 const useFirebaseAuth = () => {
   // Set an initializing state whilst Firebase connects

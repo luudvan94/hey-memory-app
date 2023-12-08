@@ -9,7 +9,7 @@ export default makeStyles(({ colors, spacing }, props) => ({
     borderRadius: 10,
     padding: spacing.lg,
     alignItems: 'center',
-    gap: 5
+    gap: spacing.xl
   },
   icon: {
     width: 34,

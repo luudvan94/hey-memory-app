@@ -6,8 +6,9 @@ import {
   TextStyle
 } from 'react-native';
 
+type TextStyleFunction = (theme: ColorWithTheme) => TextStyle;
 type ColorWithTheme = { colors: Colors } & Theme;
-export const textStyle = {
+export const textStyle: Record<string, TextStyleFunction> = {
   largeTitle: ({ spacing }: ColorWithTheme) => ({
     fontSize: 34
   }),
@@ -21,26 +22,29 @@ export const textStyle = {
     fontSize: 20
   }),
   headline: ({ spacing }: ColorWithTheme) => ({
-    fontSize: 17,
-    fontweight: '600'
+    fontSize: 17
   }),
   body: ({ spacing }: ColorWithTheme) => ({
     fontSize: 16
   }),
   callout: ({ spacing }: ColorWithTheme) => ({
-    fontSize: 13
+    fontSize: 14
   }),
   secondary: ({ colors }: ColorWithTheme) => ({
     color: colors.grey2
+  }),
+  bold: (theme: ColorWithTheme) => ({
+    fontWeight: 'bold'
   })
 };
 
 type TextProps = {
-  // eslint-disable-next-line no-unused-vars
-  [K in keyof typeof textStyle]?: true | undefined;
-} & {
+  // children: string;
   children: React.ReactNode;
   style?: StyleProp<TextStyle>;
+} & {
+  // eslint-disable-next-line no-unused-vars
+  [K in keyof typeof textStyle]?: true | undefined | string;
 };
 
 const Text: React.FC<TextProps> = (props) => {
@@ -52,8 +56,8 @@ const Text: React.FC<TextProps> = (props) => {
     .map((key) => textStyle[key as keyof typeof textStyle](theme));
 
   const mergedStyles = StyleSheet.flatten([
-    ...stylesToApply,
     { fontFamily: 'Inter-Black' },
+    ...stylesToApply,
     style
   ]);
 

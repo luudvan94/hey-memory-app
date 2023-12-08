@@ -5,6 +5,8 @@ import React, { useRef } from 'react';
 import { TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { useHotStateContext } from 'app/context/hotState/hotState.context';
+
 import RecentSearch from './components/recentSearch';
 import useStyles from './searchScreen.style';
 import { useSearchScreen } from './useSearchScreen';
@@ -12,6 +14,10 @@ import { useSearchScreen } from './useSearchScreen';
 type SearchScreenProps = object;
 
 const SearchScreen: React.FC<SearchScreenProps> = (props) => {
+  const {
+    content: { search: content }
+  } = useHotStateContext();
+
   const styles = useStyles();
   let searchBarRef = useRef<TextInput>();
   const { theme } = useTheme();
@@ -33,12 +39,14 @@ const SearchScreen: React.FC<SearchScreenProps> = (props) => {
           autoFocus={true}
           showCancel
           platform="ios"
-          placeholder="Type Here..."
+          placeholder={content.typeHere}
           onChangeText={onSearchTextChange}
           value={searchText}
           inputStyle={styles.input}
           inputContainerStyle={styles.searchBar}
-          cancelButtonProps={styles.cancelButton}
+          cancelButtonProps={{
+            buttonTextStyle: styles.cancelButton
+          }}
           searchIcon={
             <Ionicons
               name="search-outline"
@@ -47,9 +55,8 @@ const SearchScreen: React.FC<SearchScreenProps> = (props) => {
             />
           }
         />
-
-        <RecentSearch />
       </View>
+      <RecentSearch style={styles.searchContainer} />
     </SafeAreaView>
   );
 };
