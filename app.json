@@ -35,6 +35,14 @@
             "useFrameworks": "static"
           }
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Hey Memory to access your photos",
+          "cameraPermission": "Allow Hey Memory to access your camera",
+          "microphonePermission": "Allow Hey Memory to access your microphone"
+        }
       ]
     ]
   }

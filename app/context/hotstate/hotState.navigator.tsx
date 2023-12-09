@@ -19,6 +19,7 @@ const AppTabs = () => {
 
   return (
     <Tab.Navigator
+      initialRouteName={Screens.HOME}
       screenOptions={({ route }) => ({
         tabBarShowLabel: false,
         headerShown: false,
@@ -94,7 +95,10 @@ const AppTabs = () => {
 
 function HotStateNavigator() {
   return (
-    <Root.Navigator screenOptions={{ headerShown: false }}>
+    <Root.Navigator
+      initialRouteName="Tab"
+      screenOptions={{ headerShown: false }}
+    >
       <Root.Group>
         <Root.Screen name="Tab" component={AppTabs}></Root.Screen>
       </Root.Group>

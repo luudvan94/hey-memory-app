@@ -1,10 +1,13 @@
-import { useHeaderHeight } from '@react-navigation/elements';
-import { Button } from '@rneui/themed';
-import { KeyboardAvoidingView, Platform, View } from 'react-native';
+import { Divider } from '@rneui/themed';
+import React from 'react';
+import { View } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 
+import { TweetContent } from 'app/components';
+import { AssetContainer } from 'app/components/assetContainer';
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
 
+import { Footer } from './footer/footer';
 import useStyles from './tweetScreen.style';
 import { useTweetScreen } from './useTweetScreen';
 
@@ -12,16 +15,37 @@ const TweetScreen: React.FC = () => {
   const {
     content: { tweet: content }
   } = useHotStateContext();
-
+  const scrollViewRef = React.useRef<ScrollView>(null);
   const styles = useStyles();
+  const [assetContainerHeight, setAssetContainerHeight] =
+    React.useState<number>(0);
 
-  const height = useHeaderHeight();
-  const { text, setText } = useTweetScreen();
+  const { text, setText, onAssetSelected, selectedAssets } = useTweetScreen();
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.container}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          ref={scrollViewRef}
+          showsVerticalScrollIndicator={false}
+          onLayout={(event) => {
+            if (assetContainerHeight === 0) {
+              // when there is no asset selected, scroll to the end of textinput
+              scrollViewRef.current?.scrollToEnd({ animated: true });
+            }
+          }}
+        >
+          <View style={styles.parentContainer}>
+            <Divider style={styles.divider} />
+            <TweetContent containerStyle={styles.parentTweet} />
+          </View>
           <TextInput
+            onLayout={(layout) => {
+              const { height, y } = layout.nativeEvent.layout;
+              scrollViewRef.current?.scrollTo({
+                y: y + height - assetContainerHeight - 30,
+                animated: true
+              });
+            }}
             multiline
             autoFocus
             style={styles.textInput}
@@ -29,41 +53,21 @@ const TweetScreen: React.FC = () => {
             placeholder={content.placeholder}
             onChangeText={(val) => setText(val)}
           />
+
+          {selectedAssets.length > 0 ? (
+            <AssetContainer
+              onLayout={(w, h) => {
+                setAssetContainerHeight(h);
+              }}
+              assets={selectedAssets}
+              containerStyle={styles.assetContainer}
+            />
+          ) : null}
+
+          <View style={{ height: 30 }} />
         </ScrollView>
 
-        <KeyboardAvoidingView
-          keyboardVerticalOffset={height + 70}
-          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-          enabled
-        >
-          <View style={styles.footer}>
-            <View style={styles.tools}>
-              <Button
-                icon={{
-                  name: 'image',
-                  type: 'ionicons',
-                  size: 25,
-                  color: 'grey'
-                }}
-                buttonStyle={styles.buttonStyle}
-              />
-              <Button
-                icon={{
-                  name: 'camera',
-                  type: 'font-awesome',
-                  size: 23,
-                  color: 'grey'
-                }}
-                buttonStyle={styles.buttonStyle}
-              />
-            </View>
-            <Button
-              title={content.post}
-              buttonStyle={styles.postButton}
-              titleStyle={styles.post}
-            />
-          </View>
-        </KeyboardAvoidingView>
+        <Footer onAssetSelected={onAssetSelected} />
       </View>
     </View>
   );

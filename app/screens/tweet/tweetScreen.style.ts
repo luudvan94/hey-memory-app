@@ -12,28 +12,23 @@ export default makeStyles((theme, props) => ({
   textInput: {
     ...textStyle.body(theme)
   },
-  postButton: {
-    paddingHorizontal: theme.spacing.xl,
-    paddingVertical: theme.spacing.lg,
-    backgroundColor: theme.colors.primary,
-    borderRadius: 40,
-    alignSelf: 'flex-end'
-  },
-  footer: {
+  parentContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    marginBottom: theme.spacing.lg,
+    gap: theme.spacing.xl
   },
-  tools: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center'
+  divider: {
+    width: 3,
+    height: '100%',
+    backgroundColor: theme.colors.grey4,
+    borderRadius: 3
   },
-  buttonStyle: {
-    backgroundColor: 'transparent'
+  parentTweet: {
+    flex: 1
   },
-  post: {
-    ...textStyle.body(theme)
+  assetContainer: {
+    marginVertical: theme.spacing.md
   }
 }));

@@ -18,15 +18,6 @@ export default makeStyles(({ colors, spacing }, props) => ({
     gap: spacing.xl,
     paddingRight: spacing.md
   },
-  imageContainer: {
-    display: 'flex',
-    justifyContent: 'flex-start'
-  },
-  image: {
-    flex: 1,
-    height: 200,
-    borderRadius: 10
-  },
   footer: {
     display: 'flex',
     flexDirection: 'row',

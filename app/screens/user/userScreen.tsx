@@ -1,6 +1,6 @@
+import { Button } from '@rneui/themed';
 import { View } from 'react-native';
 
-import { Button, Text } from 'app/components';
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
 
 import { useUserScreen } from './useUserScreen';
@@ -17,9 +17,7 @@ const UserScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Button onPress={logout}>
-        <Text body>{content.logOut}</Text>
-      </Button>
+      <Button title={content.logOut} onPress={logout} />
     </View>
   );
 };
