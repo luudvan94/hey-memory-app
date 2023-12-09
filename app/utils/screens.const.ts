@@ -3,6 +3,5 @@ export const Screens = {
   HOME: 'Home',
   SEARCH: 'Search',
   USER: 'User',
-  TWEET: 'Tweet',
-  LOVE: 'Love'
+  TWEET: 'Tweet'
 };
