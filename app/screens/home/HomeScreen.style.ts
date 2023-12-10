@@ -3,7 +3,7 @@ import { makeStyles } from '@rneui/themed';
 export default makeStyles(({ spacing }, props) => ({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: '100%',

@@ -1,4 +1,6 @@
 export const content = {
+  back: 'Back',
+  home: {},
   user: {
     logOut: 'Log out'
   },
@@ -13,6 +15,14 @@ export const content = {
     recent: 'Recent',
     clear: 'Clear',
     typeHere: 'Type here...'
+  },
+  dialog: {
+    delete: {
+      title: 'Delete',
+      message: 'Are you sure you want to delete this tweet?',
+      yes: 'Yes',
+      no: 'No'
+    }
   }
 };
 

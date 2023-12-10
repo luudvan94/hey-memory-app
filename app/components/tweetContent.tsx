@@ -11,7 +11,9 @@ const TweetContent: React.FC<TweetContentProps> = ({ containerStyle }) => {
   const styles = useStyles();
   return (
     <View style={[styles.tweetContent, containerStyle]}>
-      <Text headline>eating a lot of food and drinking a lot of water</Text>
+      <Text headline>
+        eating a lot of food and drinking a lot of food hahaha
+      </Text>
     </View>
   );
 };

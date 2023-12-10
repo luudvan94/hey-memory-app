@@ -4,6 +4,7 @@ export default makeStyles((theme, props) => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
+    gap: theme.spacing.xl,
     alignItems: 'center'
   },
   content: {
@@ -12,9 +13,10 @@ export default makeStyles((theme, props) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     marginBottom: theme.spacing.lg,
-    marginTop: theme.spacing.lg
+    marginTop: theme.spacing.sm
   },
   buttonStyle: {
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    paddingVertical: theme.spacing.md
   }
 }));

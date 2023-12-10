@@ -7,43 +7,31 @@ export default makeStyles(({ colors, spacing }, props) => ({
     alignItems: 'flex-start',
     width: '100%',
     gap: 0,
-    paddingTop: spacing.xl,
-    paddingBottom: spacing.md,
-    paddingLeft: spacing.xl
+    paddingTop: spacing.md
   },
   content: {
     flex: 1,
     display: 'flex',
     justifyContent: 'flex-start',
-    gap: spacing.xl,
-    paddingRight: spacing.md
+    gap: spacing.xl
   },
   footer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingRight: spacing.lg
-  },
-  actions: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    gap: spacing.md
+    justifyContent: 'space-between'
   },
   dateTime: {
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.lg
-  },
-  action: {
-    backgroundColor: 'red'
+    alignItems: 'center'
   },
   border: {
     width: '100%',
-    height: 1,
-    backgroundColor: colors.grey5
+    height: 1
+  },
+  button: {
+    display: 'flex',
+    backgroundColor: 'transparent'
   }
 }));

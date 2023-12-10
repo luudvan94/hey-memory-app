@@ -1,8 +1,6 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { ThemeProvider } from '@rneui/themed';
 import { useFonts } from 'expo-font';
 import React from 'react';
-import { useColorScheme } from 'react-native';
 
 import AppInner from 'app/appInner';
 import { AuthProvider } from 'app/context/auth/auth.context';
@@ -14,21 +12,16 @@ function App() {
     'Inter-Black': require('./assets/fonts/Inter-Light.otf')
   });
 
-  const scheme = useColorScheme();
-  theme.mode = scheme === 'dark' ? 'dark' : 'light';
-
   if (!fontsLoaded) {
     return null;
   }
 
   return (
-    <NavigationContainer>
-      <ThemeProvider theme={theme}>
-        <AuthProvider>
-          <AppInner />
-        </AuthProvider>
-      </ThemeProvider>
-    </NavigationContainer>
+    <ThemeProvider theme={theme}>
+      <AuthProvider>
+        <AppInner />
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

@@ -31,7 +31,7 @@ export const textStyle: Record<string, TextStyleFunction> = {
     fontSize: 14
   }),
   secondary: ({ colors }: ColorWithTheme) => ({
-    color: colors.grey2
+    color: colors.grey1
   }),
   bold: (theme: ColorWithTheme) => ({
     fontWeight: 'bold'
