@@ -1,8 +1,10 @@
 import { Content, Tweet, User } from '@luudvan94/hey-memory-shared-models';
 import firestore from '@react-native-firebase/firestore';
 
+import { getDateLimits } from 'app/utils/helpers';
+
 import { TweetFilter, TweetService } from './tweet.service';
-import { Constants, generateTweetId } from '../firestore.utils';
+import { Constants } from '../firestore.utils';
 
 export class FirebaseTweetService implements TweetService {
   protected user: User;
@@ -19,14 +21,10 @@ export class FirebaseTweetService implements TweetService {
       .collection(Constants.USERS)
       .doc(this.user.uid)
       .collection(Constants.TWEETS)
-      .doc(generateTweetId())
-      .set(
-        {
-          content,
-          createdAt: new Date()
-        },
-        { merge: true }
-      );
+      .add({
+        content,
+        createdAt: new Date()
+      });
   };
 
   getTweets = async (filter: TweetFilter): Promise<Tweet[]> => {
@@ -37,15 +35,11 @@ export class FirebaseTweetService implements TweetService {
       .orderBy('createdAt', 'desc');
 
     if (filter.selectedDate) {
-      query = query.where(
-        'createdAt',
-        '>=',
-        new Date(
-          filter.selectedDate.getFullYear(),
-          filter.selectedDate.getMonth(),
-          filter.selectedDate.getDate()
-        )
-      );
+      const [startDate, endDate] = getDateLimits(filter.selectedDate);
+
+      query = query
+        .where('createdAt', '>=', startDate)
+        .where('createdAt', '<=', endDate);
     }
 
     const querySnapshot = await query.get();
@@ -57,7 +51,6 @@ export class FirebaseTweetService implements TweetService {
         createdAt: doc.data()['createdAt'].toDate()
       });
     });
-
     return tweets;
   };
 }
