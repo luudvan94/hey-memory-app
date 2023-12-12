@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { View } from 'react-native';
 
-import { TweetList } from 'app/components/tweetList';
+import { TweetList } from 'app/components/tweetList/tweetList';
 import { TweetStackParamList } from 'app/context/hotState/hotState.navigator';
 import {
   WithTweetActionDialogProps,
@@ -23,7 +23,8 @@ const SearchResultScreen: React.FC<
   return (
     <View style={styles.container}>
       <TweetList
-        onActionPress={openDeleteDialog}
+        filter={{}}
+        onTweetActionPress={openDeleteDialog}
         onTweetPress={() => {
           navigation.navigate(Screens.TWEET_DETAIL);
         }}

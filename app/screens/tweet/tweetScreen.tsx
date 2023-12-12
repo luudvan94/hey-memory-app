@@ -14,7 +14,7 @@ const TweetScreen: React.FC = () => {
   } = useHotStateContext();
   const scrollViewRef = React.useRef<ScrollView>(null);
   const styles = useStyles();
-  const { text, setText } = useTweetScreen();
+  const { text, setText, onPostPress } = useTweetScreen();
   return (
     <View style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -34,7 +34,10 @@ const TweetScreen: React.FC = () => {
           <View style={{ height: 30 }} />
         </ScrollView>
 
-        <Footer />
+        <Footer
+          onPostPress={onPostPress}
+          shouldDisablePostButton={text?.length === 0}
+        />
       </View>
     </View>
   );

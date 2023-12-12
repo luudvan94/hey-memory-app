@@ -3,7 +3,14 @@ import { View } from 'react-native';
 
 import useStyles from './header.style';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  selectedDate: Date;
+  updateSelectedDate: (date: Date) => void;
+}
+const Header: React.FC<HeaderProps> = ({
+  selectedDate,
+  updateSelectedDate
+}) => {
   const styles = useStyles();
   const {
     theme: { colors }
@@ -11,6 +18,11 @@ const Header: React.FC = () => {
   return (
     <View style={styles.container}>
       <Button
+        onPress={() => {
+          const newDate = new Date(selectedDate);
+          newDate.setDate(newDate.getDate() - 1);
+          updateSelectedDate(newDate);
+        }}
         buttonStyle={styles.buttonStyle}
         icon={{
           name: 'arrow-left',
@@ -20,11 +32,16 @@ const Header: React.FC = () => {
         }}
       />
       <Button
-        title={'8 Dec, 2023'}
+        title={selectedDate.toDateString()}
         buttonStyle={styles.buttonStyle}
         titleStyle={styles.time}
       />
       <Button
+        onPress={() => {
+          const newDate = new Date(selectedDate);
+          newDate.setDate(newDate.getDate() + 1);
+          updateSelectedDate(newDate);
+        }}
         buttonStyle={styles.buttonStyle}
         icon={{
           name: 'arrow-right',

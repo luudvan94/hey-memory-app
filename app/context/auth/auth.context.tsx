@@ -1,15 +1,15 @@
+import { User } from '@luudvan94/hey-memory-shared-models';
 import React, { useMemo } from 'react';
 
 import { Text } from 'app/components';
 import { useFirebaseAuth } from 'app/hooks/useFirebaseAuth';
-import User from 'app/models/user';
 
 import { AuthService } from './auth.service';
 
 type AuthContextValue = {
-  loggedIn: boolean;
+  isLoggedIn: boolean;
   service: AuthService;
-  user: User | null;
+  user: User | undefined;
 };
 
 const AuthContext = React.createContext<AuthContextValue | undefined>(
@@ -17,11 +17,11 @@ const AuthContext = React.createContext<AuthContextValue | undefined>(
 );
 
 const AuthProvider = ({ children }) => {
-  const { user, initializing, service } = useFirebaseAuth();
+  const { user, initializing, service, isLoggedIn } = useFirebaseAuth();
 
   const value: AuthContextValue = useMemo(() => {
     return {
-      loggedIn: !!user,
+      isLoggedIn,
       service,
       user
     };

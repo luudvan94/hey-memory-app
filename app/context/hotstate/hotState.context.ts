@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 
+import { TweetService } from 'app/services/tweet/tweet.service';
+
 import { HotStateContent } from './hotState.content';
 
 type HotStateContextValue = {
   content: HotStateContent;
+  tweetService: TweetService;
 };
 
 const HotStateContext = React.createContext<HotStateContextValue | undefined>(

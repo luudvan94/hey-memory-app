@@ -6,7 +6,15 @@ import { KeyboardAvoidingView, Platform, View } from 'react-native';
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
 
 import useStyles from './footer.style';
-export const Footer: React.FC = () => {
+
+interface FooterProps {
+  shouldDisablePostButton: boolean;
+  onPostPress: () => void;
+}
+export const Footer: React.FC<FooterProps> = ({
+  shouldDisablePostButton,
+  onPostPress
+}) => {
   const height = useHeaderHeight();
   const styles = useStyles();
 
@@ -21,6 +29,8 @@ export const Footer: React.FC = () => {
     >
       <View style={styles.footer}>
         <Button
+          onPress={onPostPress}
+          disabled={shouldDisablePostButton}
           title={content.post}
           buttonStyle={styles.postButton}
           titleStyle={styles.post}

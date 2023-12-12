@@ -11,7 +11,8 @@ const AppInner = () => {
   const scheme = useColorScheme();
   const { theme } = useTheme();
   theme.mode = scheme === 'dark' ? 'dark' : 'light';
-  const { loggedIn } = useAuthProvider();
+  const { isLoggedIn } = useAuthProvider();
+
   return (
     <NavigationContainer
       theme={{
@@ -26,7 +27,7 @@ const AppInner = () => {
         dark: theme.mode === 'dark'
       }}
     >
-      {loggedIn ? <HotStateProvider /> : <ColdStateProvider />}
+      {isLoggedIn ? <HotStateProvider /> : <ColdStateProvider />}
     </NavigationContainer>
   );
 };

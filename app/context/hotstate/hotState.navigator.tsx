@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from '@rneui/themed';
 import { View } from 'react-native';
 
-import HomeScreen from 'app/screens/home/homeScreen';
+import HomeScreen from 'app/screens/home/HomeScreen';
 import SearchScreen from 'app/screens/search/searchScreen';
 import SearchResultScreen from 'app/screens/searchResult/searchResultScreen';
 import TweetScreen from 'app/screens/tweet/tweetScreen';

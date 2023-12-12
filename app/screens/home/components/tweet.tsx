@@ -1,3 +1,4 @@
+import { Tweet as TweetModel } from '@luudvan94/hey-memory-shared-models';
 import { Divider } from '@rneui/base';
 import { Button, useTheme } from '@rneui/themed';
 import { View } from 'react-native';
@@ -5,8 +6,8 @@ import { View } from 'react-native';
 import { Text, TweetContent } from 'app/components';
 
 import useStyles from './tweet.style';
-
 interface TweetProps {
+  tweet: TweetModel;
   openDeleteDialog: () => void;
   onPress: () => void;
   pressable?: false | undefined;
@@ -15,7 +16,8 @@ interface TweetProps {
 const Tweet: React.FC<TweetProps> = ({
   openDeleteDialog,
   onPress,
-  pressable = true
+  pressable = true,
+  tweet
 }) => {
   const styles = useStyles();
   const { theme } = useTheme();
@@ -32,15 +34,15 @@ const Tweet: React.FC<TweetProps> = ({
       >
         <View style={styles.container}>
           <View style={styles.content}>
-            <TweetContent />
+            <TweetContent content={tweet.content} />
 
             <View style={styles.footer}>
               <Text callout secondary>
-                07-12-2023
+                {tweet.createdAt.toDateString()}
               </Text>
               <View style={styles.dateTime}>
                 <Text callout secondary>
-                  14:54
+                  {tweet.createdAt.toLocaleTimeString()}
                 </Text>
                 <Button
                   buttonStyle={{

@@ -1,29 +1,29 @@
+import { User } from '@luudvan94/hey-memory-shared-models';
 import auth from '@react-native-firebase/auth';
 import { useEffect, useState } from 'react';
 
 import { FirebaseAuthService } from 'app/context/auth/auth.service';
-import User from 'app/models/user';
-
-if (process.env.EXPO_PUBLIC_DEV) {
-  auth().useEmulator('http://127.0.0.1:9099');
-}
 
 const useFirebaseAuth = () => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | undefined>();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const service = new FirebaseAuthService();
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
-      setUser(user);
+      if (user) {
+        setUser(user);
+      }
+      setIsLoggedIn(!!user);
 
       if (initializing) setInitializing(false);
     });
     return subscriber; // unsubscribe on unmount
   }, [initializing, user]);
 
-  return { user, initializing, service };
+  return { user, initializing, service, isLoggedIn };
 };
 
 export { useFirebaseAuth };

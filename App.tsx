@@ -3,9 +3,11 @@ import { useFonts } from 'expo-font';
 import React from 'react';
 
 import AppInner from 'app/appInner';
+import { initlizeFirebase } from 'app/config/firebaseConfig';
 import { AuthProvider } from 'app/context/auth/auth.context';
 import { theme } from 'app/styles/theme';
 
+initlizeFirebase();
 function App() {
   // eslint-disable-next-line no-unused-vars
   const [fontsLoaded] = useFonts({

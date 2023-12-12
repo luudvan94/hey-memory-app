@@ -1,3 +1,4 @@
+import { Content } from '@luudvan94/hey-memory-shared-models';
 import { makeStyles } from '@rneui/themed';
 import { StyleProp, View, ViewStyle } from 'react-native';
 
@@ -6,14 +7,16 @@ import { Text } from './text';
 interface TweetContentProps {
   containerStyle?: StyleProp<ViewStyle>;
   unActionable?: false | undefined;
+  content: Content;
 }
-const TweetContent: React.FC<TweetContentProps> = ({ containerStyle }) => {
+const TweetContent: React.FC<TweetContentProps> = ({
+  containerStyle,
+  content
+}) => {
   const styles = useStyles();
   return (
     <View style={[styles.tweetContent, containerStyle]}>
-      <Text headline>
-        eating a lot of food and drinking a lot of food hahaha
-      </Text>
+      <Text headline>{content}</Text>
     </View>
   );
 };
