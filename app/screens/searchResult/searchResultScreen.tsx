@@ -24,7 +24,6 @@ const SearchResultScreen: React.FC<
     <View style={styles.container}>
       <TweetList
         filter={{}}
-        onTweetActionPress={openDeleteDialog}
         onTweetPress={() => {
           navigation.navigate(Screens.TWEET_DETAIL);
         }}

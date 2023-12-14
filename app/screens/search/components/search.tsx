@@ -24,15 +24,6 @@ export const Search: React.FC<SearchProps> = ({ onPress }) => {
         <View style={{ flex: 1 }}>
           <View style={styles.content}>
             <Text body>test search recent</Text>
-            <Button
-              icon={{
-                name: 'close',
-                type: 'ionicons',
-                size: 18,
-                color: colors.grey3
-              }}
-              buttonStyle={styles.buttonStyle}
-            />
           </View>
 
           <Divider color={colors.grey4} />

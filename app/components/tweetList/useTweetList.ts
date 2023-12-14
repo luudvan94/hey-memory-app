@@ -1,22 +1,23 @@
-import { useFocusEffect } from '@react-navigation/native';
+import { Tweet } from '@luudvan94/hey-memory-shared-models';
 import { useCallback } from 'react';
-import { useAsyncResource } from 'use-async-resource';
 
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
+import { useFirestoreTweet } from 'app/hooks/useFirestoreTweet';
+import { log } from 'app/hooks/useLogger';
 import { TweetFilter } from 'app/services/tweet/tweet.service';
 
 export const useTweetList = (filter: TweetFilter) => {
   const { tweetService } = useHotStateContext();
-  const [tweetsReader, getTweet] = useAsyncResource(
-    tweetService.getTweets,
-    filter
+  const { tweets } = useFirestoreTweet(filter);
+
+  const deleteTweet = useCallback(
+    (tweet: Tweet) => {
+      log.debug('deleteTweet on TweetList');
+
+      tweetService.deleteTweet(tweet.id);
+    },
+    [tweetService]
   );
 
-  useFocusEffect(
-    useCallback(() => {
-      getTweet(filter);
-    }, [filter, getTweet])
-  );
-
-  return { tweetsReader };
+  return { tweets, deleteTweet };
 };

@@ -1,11 +1,13 @@
 import { Dialog, makeStyles, useTheme } from '@rneui/themed';
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { Text } from 'app/components';
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
+import { log } from 'app/hooks/useLogger';
 
+type OnDelete = () => void;
 export type WithTweetActionDialogProps = {
-  openDeleteDialog: () => void;
+  openDeleteDialog: (onDelete: OnDelete) => void;
 };
 
 export const withTweetActionDialog = (Component: React.FC) => {
@@ -15,12 +17,23 @@ export const withTweetActionDialog = (Component: React.FC) => {
     } = useHotStateContext();
     const styles = useStyles();
     const [showDeleteDialog, setShowDeleteDialog] = React.useState(false);
-    const openDeleteDialog = () => {
+    const [onDelete, setOnDelete] = React.useState<OnDelete | undefined>();
+
+    const openDeleteDialog = (onDelete: OnDelete) => {
+      setOnDelete(onDelete);
       setShowDeleteDialog(true);
     };
     const hideDeleteDialog = () => {
       setShowDeleteDialog(false);
     };
+
+    const deleteTweet = useCallback(() => {
+      if (onDelete) {
+        log.debug('onDelete');
+
+        onDelete();
+      }
+    }, [onDelete]);
     const { theme } = useTheme();
 
     return (
@@ -46,7 +59,10 @@ export const withTweetActionDialog = (Component: React.FC) => {
               backgroundColor: theme.colors.error
             }}
             title={content.delete.yes}
-            onPress={hideDeleteDialog}
+            onPress={() => {
+              hideDeleteDialog();
+              deleteTweet();
+            }}
           />
         </Dialog>
       </>

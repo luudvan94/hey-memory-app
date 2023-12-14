@@ -1,9 +1,10 @@
 import { Content, Tweet, User } from '@luudvan94/hey-memory-shared-models';
 import firestore from '@react-native-firebase/firestore';
 
+import { log } from 'app/hooks/useLogger';
 import { getDateLimits } from 'app/utils/helpers';
 
-import { TweetFilter, TweetService } from './tweet.service';
+import { TweetFilter, TweetService, TweetsHandler } from './tweet.service';
 import { Constants } from '../firestore.utils';
 
 export class FirebaseTweetService implements TweetService {
@@ -27,8 +28,11 @@ export class FirebaseTweetService implements TweetService {
       });
   };
 
-  getTweets = async (filter: TweetFilter): Promise<Tweet[]> => {
-    let query = await firestore()
+  onTweetChanges = (
+    filter: TweetFilter,
+    callback: TweetsHandler
+  ): (() => void) => {
+    let query = firestore()
       .collection(Constants.USERS)
       .doc(this.user.uid)
       .collection(Constants.TWEETS)
@@ -42,15 +46,28 @@ export class FirebaseTweetService implements TweetService {
         .where('createdAt', '<=', endDate);
     }
 
-    const querySnapshot = await query.get();
-    const tweets: Tweet[] = [];
-    querySnapshot.forEach((doc) => {
-      tweets.push({
-        id: doc.id,
-        content: doc.data()['content'],
-        createdAt: doc.data()['createdAt'].toDate()
+    const subscriber = query.onSnapshot((snapshot) => {
+      log.debug('onTweetChanges');
+      const tweets: Tweet[] = [];
+      snapshot.forEach((doc) => {
+        tweets.push({
+          id: doc.id,
+          content: doc.data()['content'],
+          createdAt: doc.data()['createdAt'].toDate()
+        });
       });
+      callback(tweets);
     });
-    return tweets;
+
+    return subscriber;
+  };
+
+  deleteTweet = async (tweetId: string): Promise<void> => {
+    await firestore()
+      .collection(Constants.USERS)
+      .doc(this.user.uid)
+      .collection(Constants.TWEETS)
+      .doc(tweetId)
+      .delete();
   };
 }

@@ -19,6 +19,7 @@
     "@luudvan94/hey-memory-shared-models": "1.2.6",
     "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native-community/netinfo": "9.3.10",
+    "@react-native-firebase/analytics": "^18.7.3",
     "@react-native-firebase/app": "^18.7.1",
     "@react-native-firebase/auth": "^18.7.1",
     "@react-native-firebase/firestore": "^18.7.2",

@@ -13,7 +13,7 @@ export default makeStyles(({ colors, spacing }, props) => ({
     flex: 1,
     display: 'flex',
     justifyContent: 'flex-start',
-    gap: spacing.xl
+    gap: spacing.lg
   },
   footer: {
     display: 'flex',

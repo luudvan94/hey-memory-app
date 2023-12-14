@@ -1,6 +1,8 @@
 export const content = {
   back: 'Back',
-  home: {},
+  home: {
+    noTweet: 'There is no tweet yet.'
+  },
   user: {
     logOut: 'Log out'
   },

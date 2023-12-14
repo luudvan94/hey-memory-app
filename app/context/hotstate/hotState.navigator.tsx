@@ -89,11 +89,14 @@ const AppTabs = () => {
 
 const AppStack = createStackNavigator();
 const AppNavigator = () => {
-  const { content } = useHotStateContext();
   return (
     <AppStack.Navigator
       initialRouteName={Screens.TAB}
-      screenOptions={{ headerShown: true, headerBackTitle: content.back }}
+      screenOptions={{
+        headerShown: true,
+        headerBackTitle: '',
+        headerBackTitleVisible: false
+      }}
     >
       <AppStack.Screen
         name={Screens.SEARCH_RESULT}
