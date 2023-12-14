@@ -8,20 +8,22 @@ import { Text, TweetContent } from 'app/components';
 import useStyles from './tweet.style';
 interface TweetProps {
   tweet: TweetModel;
-  openDeleteDialog: () => void;
-  onPress: () => void;
-  pressable?: false | undefined;
+  openDeleteDialog?: () => void;
+  onPress?: (tweet: TweetModel) => void;
+  pressable: boolean;
+  onChatBubblePress?: () => void;
 }
 
 const Tweet: React.FC<TweetProps> = ({
   openDeleteDialog,
   onPress,
   pressable = true,
-  tweet
+  tweet,
+  onChatBubblePress
 }) => {
   const styles = useStyles();
   const { theme } = useTheme();
-
+  const iconColor = theme.colors.grey3;
   return (
     <View>
       <Button
@@ -29,35 +31,61 @@ const Tweet: React.FC<TweetProps> = ({
         disabledStyle={{ backgroundColor: 'transparent' }}
         buttonStyle={styles.button}
         onPress={() => {
-          if (pressable) onPress();
+          if (pressable && onPress) onPress(tweet);
         }}
       >
         <View style={styles.container}>
           <View style={styles.content}>
-            <TweetContent content={tweet.content} />
+            <View style={styles.contentContainer}>
+              {tweet.childCount > 0 ? <Divider style={styles.divider} /> : null}
+              <TweetContent
+                containerStyle={{ flex: 1 }}
+                content={tweet.content}
+              />
+            </View>
+            <View>
+              {tweet.childCount > 0 ? (
+                <Text secondary>{`${tweet.childCount} more events`}</Text>
+              ) : null}
+              <View style={styles.footer}>
+                <View
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    alignItems: 'center'
+                  }}
+                >
+                  <Text callout secondary>
+                    {tweet.createdAt.toDateString()}
+                  </Text>
+                  <Button
+                    onPress={onChatBubblePress}
+                    buttonStyle={styles.button}
+                    titleStyle={{ margin: 0, padding: 0 }}
+                    icon={{
+                      name: 'chatbubbles-outline',
+                      type: 'ionicon',
+                      size: 20,
+                      color: iconColor
+                    }}
+                  />
+                </View>
 
-            <View style={styles.footer}>
-              <Text callout secondary>
-                {tweet.createdAt.toDateString()}
-              </Text>
-              <View style={styles.dateTime}>
-                <Text callout secondary>
-                  {tweet.createdAt.toLocaleTimeString()}
-                </Text>
-                <Button
-                  buttonStyle={{
-                    padding: 0,
-                    paddingHorizontal: 0,
-                    ...styles.button
-                  }}
-                  onPress={openDeleteDialog}
-                  icon={{
-                    name: 'close',
-                    type: 'ionicons',
-                    size: 18,
-                    color: theme.colors.grey2
-                  }}
-                />
+                <View style={styles.dateTime}>
+                  <Text callout secondary>
+                    {tweet.createdAt.toLocaleTimeString()}
+                  </Text>
+                  <Button
+                    buttonStyle={styles.button}
+                    onPress={openDeleteDialog}
+                    icon={{
+                      name: 'close',
+                      type: 'ionicons',
+                      size: 20,
+                      color: iconColor
+                    }}
+                  />
+                </View>
               </View>
             </View>
           </View>

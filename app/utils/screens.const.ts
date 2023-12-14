@@ -8,5 +8,6 @@ export enum Screens {
   SEARCH_RESULT = 'SearchResult',
   TWEET_DETAIL = 'TweetDetail',
   TAB = 'Tab',
-  STACK = 'Stack'
+  STACK = 'Stack',
+  TWEET_MODAL = 'TweetModal'
 }

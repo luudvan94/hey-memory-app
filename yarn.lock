@@ -1945,10 +1945,10 @@
   resolved "https://registry.yarnpkg.com/@leichtgewicht/ip-codec/-/ip-codec-2.0.4.tgz#b2ac626d6cb9c8718ab459166d4bb405b8ffa78b"
   integrity sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==
 
-"@luudvan94/hey-memory-shared-models@1.2.6":
-  version "1.2.6"
-  resolved "https://npm.pkg.github.com/download/@luudvan94/hey-memory-shared-models/1.2.6/4435021e8d981728d816fb35b8f6756748f661fa#4435021e8d981728d816fb35b8f6756748f661fa"
-  integrity sha512-aibY850o0S0k2wDLLrn3v/7JWfOSFsVI9e1ppbIjyTOLIn6tBXMhb6PeZzYWInmss7QjDXAJBiO5Q1GmXpDnwg==
+"@luudvan94/hey-memory-shared-models@1.2.11":
+  version "1.2.11"
+  resolved "https://npm.pkg.github.com/download/@luudvan94/hey-memory-shared-models/1.2.11/8e1cd15129e6241591abd1ad2575d3af1584110d#8e1cd15129e6241591abd1ad2575d3af1584110d"
+  integrity sha512-glpNnHrDKPrz0hQ6obcmMUSZ86MwuMtXgnOCjIKEkik43EB0MD5eXwov3hk2dsK1R0olflWymHg95pd1VBE7bw==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"

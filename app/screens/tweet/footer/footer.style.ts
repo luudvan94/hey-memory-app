@@ -7,7 +7,7 @@ export default makeStyles((theme, props) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end'
+    justifyContent: 'space-between'
   },
   tools: {
     display: 'flex',

@@ -40,11 +40,13 @@ export const textStyle: Record<string, TextStyleFunction> = {
 
 type TextProps = {
   // children: string;
-  children: React.ReactNode;
-  style?: StyleProp<TextStyle>;
-} & {
   // eslint-disable-next-line no-unused-vars
   [K in keyof typeof textStyle]?: true | undefined | string;
+} & {
+  children: React.ReactNode;
+  style?: StyleProp<TextStyle>;
+
+  // [K in keyof typeof textStyle]?: true | undefined | string;
 };
 
 const Text: React.FC<TextProps> = (props) => {

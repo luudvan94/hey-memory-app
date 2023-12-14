@@ -26,7 +26,12 @@ const LoginScreen: React.FC = () => {
 
       <View style={styles.options}>
         {loginOptions.map(({ icon, label, handler }) => (
-          <LoginOption icon={icon} label={label} onPress={handler} />
+          <LoginOption
+            key={label}
+            icon={icon}
+            label={label}
+            onPress={handler}
+          />
         ))}
       </View>
     </SafeAreaView>

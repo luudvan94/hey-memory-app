@@ -1,4 +1,5 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { Tweet } from '@luudvan94/hey-memory-shared-models';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from '@rneui/themed';
@@ -78,7 +79,7 @@ const AppTabs = () => {
         listeners={({ navigation }) => ({
           tabPress: (e) => {
             e.preventDefault();
-            navigation.navigate(Screens.TWEET + '-MODAL');
+            navigation.navigate(Screens.TWEET_MODAL, {});
           }
         })}
       />
@@ -105,6 +106,9 @@ const AppNavigator = () => {
       <AppStack.Screen
         name={Screens.TWEET_DETAIL}
         component={TweetDetailScreen}
+        options={({ route }) => ({
+          title: route?.params?.['title'] || 'Tweet Detail'
+        })}
       />
       <AppStack.Screen
         name={Screens.TAB}
@@ -132,7 +136,7 @@ function HotStateNavigator() {
       </Root.Group>
       <Root.Group screenOptions={{ presentation: 'modal' }}>
         <Root.Screen
-          name={Screens.TWEET + '-MODAL'}
+          name={Screens.TWEET_MODAL}
           component={TweetScreen}
           options={{
             headerShown: true,
@@ -149,8 +153,9 @@ function HotStateNavigator() {
 
 export type TweetStackParamList = {
   [Screens.STACK]: undefined;
+  [Screens.TWEET_MODAL]: { parentTweet?: Tweet };
   [Screens.SEARCH_RESULT]: undefined;
-  [Screens.TWEET_DETAIL]: undefined;
+  [Screens.TWEET_DETAIL]: { parentTweet: Tweet };
 };
 
 export default HotStateNavigator;

@@ -13,9 +13,23 @@ export default makeStyles(({ colors, spacing }, props) => ({
     flex: 1,
     display: 'flex',
     justifyContent: 'flex-start',
-    gap: spacing.lg
+    gap: spacing.xl,
+    paddingHorizontal: spacing.md
+  },
+  contentContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.md
+  },
+  divider: {
+    width: 3,
+    height: '100%',
+    backgroundColor: colors.grey4,
+    borderRadius: 3
   },
   footer: {
+    width: '100%',
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -31,7 +45,8 @@ export default makeStyles(({ colors, spacing }, props) => ({
     height: 1
   },
   button: {
-    display: 'flex',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    paddingHorizontal: 0,
+    marginHorizontal: 0
   }
 }));

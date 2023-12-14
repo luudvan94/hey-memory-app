@@ -1,10 +1,15 @@
-import { Content, Tweet, User } from '@luudvan94/hey-memory-shared-models';
+import { Tweet, User } from '@luudvan94/hey-memory-shared-models';
 import firestore from '@react-native-firebase/firestore';
 
 import { log } from 'app/hooks/useLogger';
 import { getDateLimits } from 'app/utils/helpers';
 
-import { TweetFilter, TweetService, TweetsHandler } from './tweet.service';
+import {
+  TweetContent,
+  TweetFilter,
+  TweetService,
+  TweetsHandler
+} from './tweet.service';
 import { Constants } from '../firestore.utils';
 
 export class FirebaseTweetService implements TweetService {
@@ -17,15 +22,26 @@ export class FirebaseTweetService implements TweetService {
     this.user = user;
   }
 
-  postTweet = async (content: Content) => {
+  postTweet = async (content: TweetContent) => {
     firestore()
       .collection(Constants.USERS)
       .doc(this.user.uid)
       .collection(Constants.TWEETS)
       .add({
-        content,
+        ...content,
         createdAt: new Date()
       });
+
+    if (content.parentTweetId) {
+      firestore()
+        .collection(Constants.USERS)
+        .doc(this.user.uid)
+        .collection(Constants.TWEETS)
+        .doc(content.parentTweetId)
+        .update({
+          childCount: firestore.FieldValue.increment(1)
+        });
+    }
   };
 
   onTweetChanges = (
@@ -36,7 +52,7 @@ export class FirebaseTweetService implements TweetService {
       .collection(Constants.USERS)
       .doc(this.user.uid)
       .collection(Constants.TWEETS)
-      .orderBy('createdAt', 'desc');
+      .orderBy('createdAt', filter.sorting ? filter.sorting : 'desc');
 
     if (filter.selectedDate) {
       const [startDate, endDate] = getDateLimits(filter.selectedDate);
@@ -46,14 +62,22 @@ export class FirebaseTweetService implements TweetService {
         .where('createdAt', '<=', endDate);
     }
 
+    if (filter.parentTweetId) {
+      query = query.where('parentTweetId', '==', filter.parentTweetId);
+    } else {
+      query = query.where('parentTweetId', '==', null);
+    }
+
     const subscriber = query.onSnapshot((snapshot) => {
-      log.debug('onTweetChanges');
+      log.debug('onTweetChanges', snapshot.size);
       const tweets: Tweet[] = [];
       snapshot.forEach((doc) => {
         tweets.push({
           id: doc.id,
           content: doc.data()['content'],
-          createdAt: doc.data()['createdAt'].toDate()
+          createdAt: doc.data()['createdAt'].toDate(),
+          parentTweetId: doc.data()['parentTweetId'],
+          childCount: doc.data()['childCount'] || 0
         });
       });
       callback(tweets);

@@ -14,7 +14,7 @@ const useFirebaseAuth = () => {
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
       if (user) {
-        setUser(user);
+        setUser({ profile: { displayName: user.displayName }, ...user });
       }
       setIsLoggedIn(!!user);
 
