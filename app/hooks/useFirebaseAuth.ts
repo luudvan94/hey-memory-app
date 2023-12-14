@@ -13,15 +13,18 @@ const useFirebaseAuth = () => {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
+      // eslint-disable-next-line no-console
+      console.log('onAuthStateChanged', user);
       if (user) {
-        setUser({ profile: { displayName: user.displayName }, ...user });
+        const profile = { displayName: user.displayName };
+        setUser({ uid: user.uid, profile });
       }
       setIsLoggedIn(!!user);
 
       if (initializing) setInitializing(false);
     });
     return subscriber; // unsubscribe on unmount
-  }, [initializing, user]);
+  }, [initializing]);
 
   return { user, initializing, service, isLoggedIn };
 };
