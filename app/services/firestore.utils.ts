@@ -1,6 +1,7 @@
 export const Constants = {
   USERS: 'users',
-  TWEETS: 'tweets'
+  TWEETS: 'tweets',
+  UN_REALIZED: 'unrealized'
 };
 
 export const generateTweetId = () => {

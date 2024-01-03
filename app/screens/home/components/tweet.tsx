@@ -38,10 +38,7 @@ const Tweet: React.FC<TweetProps> = ({
           <View style={styles.content}>
             <View style={styles.contentContainer}>
               {tweet.childCount > 0 ? <Divider style={styles.divider} /> : null}
-              <TweetContent
-                containerStyle={{ flex: 1 }}
-                content={tweet.content}
-              />
+              <TweetContent containerStyle={{ flex: 1 }} tweet={tweet} />
             </View>
             <View>
               {tweet.childCount > 0 ? (

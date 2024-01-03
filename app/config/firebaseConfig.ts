@@ -1,8 +1,8 @@
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
+import storage from '@react-native-firebase/storage';
 
 import { log } from 'app/hooks/useLogger';
-
 export const initlizeFirebase = () => {
   if (process.env.EXPO_PUBLIC_DEV) {
     log.debug('Using Firebase Emulator');
@@ -10,5 +10,8 @@ export const initlizeFirebase = () => {
 
     const db = firestore();
     db.useEmulator('127.0.0.1', 8080);
+
+    const store = storage();
+    store.useEmulator('127.0.0.1', 9199);
   }
 };

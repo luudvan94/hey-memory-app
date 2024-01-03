@@ -27,7 +27,19 @@ function withSuspenseAndErrorBoundary(
 ) {
   return (props: any) => (
     <ErrorBoundary fallbackRender={options.fallbackRender}>
-      <Suspense fallback={options.fallback}>
+      <Suspense
+        fallback={
+          <View
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            {options.fallback}
+          </View>
+        }
+      >
         <Component {...props} />
       </Suspense>
     </ErrorBoundary>

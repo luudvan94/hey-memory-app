@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler';
 
 import { TweetContent } from 'app/components';
-import { AssetContainer } from 'app/components/assetContainer';
+import { AssetContainer } from 'app/components/assetContainer/assetContainer';
 import { useHotStateContext } from 'app/context/hotState/hotState.context';
 
 import { Footer } from './footer/footer';
@@ -45,7 +45,7 @@ const TweetScreen: React.FC = () => {
             <View style={styles.parentContainer}>
               <Divider style={styles.divider} />
               <TweetContent
-                content={parentTweet.content}
+                tweet={parentTweet}
                 containerStyle={styles.parentTweet}
               />
             </View>

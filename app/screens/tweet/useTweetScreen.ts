@@ -25,10 +25,18 @@ const useTweetScreen = () => {
     postTweet({
       content: text,
       parentTweetId: routeProps?.params.parentTweet?.id || null,
-      childCount: 0
+      childCount: 0,
+      photoUrl: selectedAssets[0]?.uri || null,
+      thumbnail: selectedAssets[0]?.uri || null
     });
     navigation.goBack();
-  }, [postTweet, text, routeProps?.params.parentTweet?.id, navigation]);
+  }, [
+    postTweet,
+    text,
+    routeProps?.params.parentTweet?.id,
+    selectedAssets,
+    navigation
+  ]);
 
   return {
     text,

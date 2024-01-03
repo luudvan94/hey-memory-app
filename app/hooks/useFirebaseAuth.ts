@@ -13,8 +13,6 @@ const useFirebaseAuth = () => {
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
-      // eslint-disable-next-line no-console
-      console.log('onAuthStateChanged', user);
       if (user) {
         const profile = { displayName: user.displayName };
         setUser({ uid: user.uid, profile });
